@@ -1,25 +1,26 @@
 #include <iostream>
+#include <vector>
 
 using UnaryPredicate = bool(const int *);
 
+/* Função para selecionar os elementos baseado no predicado passado como parâmetro */
 std::pair<int *, int *> array_selected(const int *first, const int *last, UnaryPredicate *p) {
-    int elementos = 0;
-    int *ints = new int;
+    std::vector<int> *ints = new std::vector<int>();
     while(first != last) {
         if(p(first)) {
-            elementos++;
-            ints = (int *) realloc(ints, elementos);
-            ints[elementos - 1] = *first;
+            ints->push_back(*first);
         }
         first++;
     }
-    return std::make_pair(&ints[0], &ints[elementos]);
+    return std::make_pair(&*ints->begin(), &*ints->end());
 }
 
+/* Predicado simples */
 bool pred(const int *a) {
-    return *a > 5;
+    return *a < 5;
 }
 
+/* Função main onde os testes são realizados */
 int main() {
     int A[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     std::pair<int *, int *> par = array_selected(std::begin(A), std::end(A), pred);

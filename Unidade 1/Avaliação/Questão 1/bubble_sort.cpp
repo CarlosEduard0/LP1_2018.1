@@ -1,5 +1,6 @@
 #include "bubble_sort.h"
 
+/* Implementação da função bubble_sort personalizada de acordo com os critérios dado pela questão */
 void sort_bubble_2(const void *first, const void *last, size_t size, Compare *cmp) {
 	byte *f = (byte *) first;
     byte *l = (byte *) last;

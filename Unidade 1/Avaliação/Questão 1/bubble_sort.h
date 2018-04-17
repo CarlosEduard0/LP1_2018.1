@@ -1,3 +1,5 @@
+/* Arquivo de cabeçalho da função bubble_sort personalizada e declaração de alguns tipos necessários */
+
 #ifndef BUBBLE_SORT
 #define BUBBLE_SORT
 
